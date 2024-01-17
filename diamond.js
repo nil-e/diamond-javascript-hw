@@ -1,33 +1,52 @@
-let text = {
-    1:" ",2:" ",3:" ",
-    4:" ",5:"*",6:" ",7:" ",8:" ",
-    9:" "
-  };
-  
-  function topDiamond (i,j) {
-  
-    while (i<10 && j>0 && i<=j) {
-          // console.log(i,j);
-      console.log(`${text[1]}${text[2]}${text[3]}${text[4]}${text[5]}${text[6]}${text[7]}${text[8]}${text[9]}`);
-      text[5+i]="*"
-      text[j-5]="*"
-      i +=1;
-      j -=1;
+// PSEUDOCODE HERE
+// 4 blanks 1 asteriks 4 blanks
+// Put a space i times then (length-1)/2 times asteriks then i times space again.
+// We keep decreasing the i number until it hits 0
+// Then we increase it one by one till it's back at 4. 
+
+function topDiamond (width) {
+  let emptySpace=" ";
+  let asterisk="*";
+  let j=(width-1)/2;
+  while (j>=0) {
+    let text= "";
+    for(let i=j; i>0; i--) {
+      text+=emptySpace;
+    }
+    for(let i=width-2*j; i>0; i--)    {
+      text+=asterisk;
+    }
+    for(let i=j; i>0; i--) {
+      text+=emptySpace;
+    }
+    console.log(text);
+    j-=1;
   }
+
+}
+
+
+function bottomDiamond (width) {
+  let emptySpace=" ";
+  let asterisk="*";
+  let j=1;
+  // let width=9;
+   while (j<5) {
+    let text= "";
+    for(let i=j; i>0; i--) {
+      text+=emptySpace;
+    }
+    for(let i=width-2*j; i>0; i--)    {
+      text+=asterisk;
+    }
+    for(let i=j; i>0; i--) {
+      text+=emptySpace;
+    }
+    console.log(text);
+    j+=1;
   }
-  
-  function bottomDiamond (i,j) {
-  
-    while (i<10 && j>0 && i!= j) {
-          // console.log(i,j);
-      text[i]=" "
-      text[j]=" "
-    console.log(`${text[1]}${text[2]}${text[3]}${text[4]}${text[5]}${text[6]}${text[7]}${text[8]}${text[9]}`);
-      i +=1;
-      j -=1;
-  }
-  }
-  
-  topDiamond(0,10);
-  bottomDiamond(1,9);
-  
+}
+
+
+topDiamond(9);
+bottomDiamond(9);
